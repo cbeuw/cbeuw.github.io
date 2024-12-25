@@ -7,16 +7,16 @@ CAA is a DNS record type which specifies the Certificate Authorities who are all
 
 At my job, we had a CAA record that looked like this
 ```
-issue "letsencrypt.org"
+example.com CAA 0 issue "letsencrypt.org"
 ```
-This allows Let's Encrypt to issue `example.com` certs and `*.example.com` wildcard certs.
+This allows Let's Encrypt to issue `example.com` certs and `*.example.com` wildcard certs. *The `0` is a flag used for CA-specific features, we can ignore it.*
 
 A bit later, we needed another CA to issue both single-domain and wildcard certificates on our domain. Without realising the `issue` directive allows for both, someone appended both `issue` and `issuewild` directives:
 
 ```
-issue     "letsencrypt.org"
-issue     "amazon.com"
-issuewild "amazon.com"
+example.com CAA 0 issue     "letsencrypt.org"
+            CAA 0 issue     "amazon.com"
+            CAA 0 issuewild "amazon.com"
 ```
 
 A bit redundant, but it looks like it should still work.
@@ -27,12 +27,12 @@ Turns out that the `issue` directive allows for wildcard issuance **only in the 
 
 This is a bad design. An additive modification should not remove capabilities of unrelated, existing entries.
 
-This is bad for security too. Suppose you want only one CA to issue  only single-domain certificates for your domain. Well, this isn't "natively" supported. The best you can do is
+On the other hand, suppose you want only one CA to issue only single-domain certificates for your domain, then you must do
 ```
-issue "ca-i-want.com"
-issuewild "a-registered-domain-thats-not-and-never-will-be-a-ca.com"
+issue     "letsencrypt.org"
+issuewild ";"
 ```
+
 ---
-{: data-content="Footnotes"}
 
 [^1]: <https://datatracker.ietf.org/doc/html/rfc8659#section-4.3-3>
