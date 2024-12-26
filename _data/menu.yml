@@ -7,7 +7,7 @@ entries:
       limit: 5
 
 links:
-  - name: Blusky
+  - name: Bluesky
     url: https://bsky.app/profile/an.dywa.ng
   - name: Fedi
     url: https://hachyderm.io/@cbeuw

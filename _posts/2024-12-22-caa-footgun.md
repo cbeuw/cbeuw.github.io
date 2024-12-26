@@ -27,7 +27,7 @@ Turns out that the `issue` directive allows for wildcard issuance **only in the 
 
 This is a bad design. An additive modification should not remove capabilities of unrelated, existing entries.
 
-On the other hand, suppose you want only one CA to issue only single-domain certificates for your domain, then you must do
+On the other hand, suppose you want only one CA to issue only single-domain certificates for your domain, then you must do something like
 ```
 issue     "letsencrypt.org"
 issuewild ";"
