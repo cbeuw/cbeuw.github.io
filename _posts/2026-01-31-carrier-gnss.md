@@ -19,6 +19,8 @@ In 4G and 5G this is called [LTE Positioning Protocol (LPP)](https://tech-academ
 
 > RRLP, RRC, and LPP are natively control-plane positioning protocols. This means that they are transported in the inner workings of cellular networks and are practically invisible to end users[^4].
 
+It's worth noting that GNSS location is never _meant_ to leave your device. GNSS coordinates are calculated entirely passively, your device doesn't need to send a single bit of information. Using GNSS is like finding out where you are by reading a road sign: you don't have to tell anyone else you read a road sign, anyone can read a road sign, and the people who put up road signs don't know who read which road sign when.
+
 These capabilities are not secrets but somehow they have mostly slid under the radar of the public consciousness. They have been used in the wild for a long time, such as by the DEA in the US in 2006[^5][^6]:
 
 > [T]he DEA agents procured a court order (but not a search warrant) to obtain GPS coordinates from the courier’s phone via a ping, or signal requesting those coordinates, sent by the phone company to the phone.
