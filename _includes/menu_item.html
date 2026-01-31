@@ -1,0 +1,20 @@
+  {%-for item in include.collection-%}
+    <h2>
+    {%- if item.url -%}
+      <a href="{{ item.url }}">{{ item.title }}</a>
+    {%- else -%}
+      {{ item.title }}
+    {%- endif -%}
+    </h2>
+
+    {%-if item.post_list-%}
+      {%
+        include post_list.html
+          category=item.post_list.category
+          limit=item.post_list.limit
+          show_more=item.post_list.show_more
+          show_more_text=item.post_list.show_more_text
+          show_more_url=item.post_list.show_more_url
+     -%}
+    {%-endif-%}
+  {%-endfor-%}
